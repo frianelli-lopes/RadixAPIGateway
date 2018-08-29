@@ -1,22 +1,14 @@
 ﻿using RadixAPIGateway.Domain.Interfaces.Repositories;
 using RadixAPIGateway.Domain.Interfaces.Services;
 using RadixAPIGateway.Domain.Models;
-using System;
+using RadixAPIGateway.Domain.Services.Generic;
 
 namespace RadixAPIGateway.Domain.Services
 {
-    public class StoreService : IStoreService
+    public class StoreService : GenericService<Store>, IStoreService
     {
-        private readonly IStoreRepository _storeRepository;
-
-        public StoreService(IStoreRepository storeRepository)
+        public StoreService(IStoreRepository repository) : base(repository)
         {
-            _storeRepository = storeRepository;
-        }
-
-        public Store GetById(int id)
-        {
-            return _storeRepository.GetById(id);
         }
     }
 }

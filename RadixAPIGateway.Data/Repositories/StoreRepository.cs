@@ -1,22 +1,14 @@
-﻿using RadixAPIGateway.Domain.Interfaces.Repositories;
+﻿using RadixAPIGateway.Data.Context;
+using RadixAPIGateway.Data.Repositories.Generic;
+using RadixAPIGateway.Domain.Interfaces.Repositories;
 using RadixAPIGateway.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RadixAPIGateway.Data.Repositories
 {
-    public class StoreRepository : IStoreRepository
+    public class StoreRepository : GenericRepository<Store>, IStoreRepository
     {
-        private  EFContext Db = new EFContext();
-        public StoreRepository()
+        public StoreRepository(EFContext context) : base(context)
         {
-
-        }
-
-        public Store GetById(int id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

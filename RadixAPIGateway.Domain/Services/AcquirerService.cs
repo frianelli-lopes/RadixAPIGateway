@@ -1,22 +1,14 @@
 ﻿using RadixAPIGateway.Domain.Interfaces.Repositories;
 using RadixAPIGateway.Domain.Interfaces.Services;
 using RadixAPIGateway.Domain.Models;
-using System;
+using RadixAPIGateway.Domain.Services.Generic;
 
 namespace RadixAPIGateway.Domain.Services
 {
-    public class AcquirerService : IAcquirerService
+    public class AcquirerService : GenericService<Acquirer>, IAcquirerService
     {
-        private readonly IAcquirerRepository _acquireRepository;
-
-        public AcquirerService(IAcquirerRepository acquireRepository)
+        public AcquirerService(IAcquirerRepository repository) : base(repository)
         {
-            _acquireRepository = acquireRepository;
-        }
-
-        public Acquirer GetById(int id)
-        {
-            return _acquireRepository.GetById(id);
         }
     }
 }

@@ -1,4 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using RadixAPIGateway.Data.Repositories;
+using RadixAPIGateway.Domain.Interfaces.Repositories;
+using RadixAPIGateway.Domain.Interfaces.Services;
+using RadixAPIGateway.Domain.Services;
 
 namespace RadixAPIGateway.IoC
 {
@@ -6,7 +10,13 @@ namespace RadixAPIGateway.IoC
     {
         public static void Configure(IServiceCollection services)
         {
-            //services.AddScoped(typeof(IAbaService), typeof(AbaService));
+            //Services
+            services.AddScoped(typeof(IAcquirerService), typeof(AcquirerService));
+            services.AddScoped(typeof(IStoreService), typeof(StoreService));
+
+            //Repositories
+            //services.AddScoped(typeof(IAcquirerRepository), typeof(AcquirerRepository));
+            services.AddScoped(typeof(IStoreRepository), typeof(StoreRepository));
         }
     }
 }

@@ -1,13 +1,17 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RadixAPIGateway.Data.Context;
 
 namespace RadixAPIGateway.API
 {
     public class Startup
     {
+        private const string corsPolicyName = "RadixCorsPolicy";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -20,6 +24,9 @@ namespace RadixAPIGateway.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=RadixDB;Trusted_Connection=True;ConnectRetryCount=0";
+            services.AddDbContext<EFContext>(options => options.UseSqlServer(connection));
+
             IoC.IoCConfiguration.Configure(services);
         }
 
@@ -30,12 +37,13 @@ namespace RadixAPIGateway.API
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseHsts();
-            }
 
-            app.UseHttpsRedirection();
+            app.UseCors(corsPolicyName);
+
+            app.UseStaticFiles();
+
+            //app.UseMigrations(env);
+
             app.UseMvc();
         }
     }

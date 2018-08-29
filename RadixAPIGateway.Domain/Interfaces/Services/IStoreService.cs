@@ -1,9 +1,9 @@
-﻿using RadixAPIGateway.Domain.Models;
+﻿using RadixAPIGateway.Domain.Interfaces.Services.Generic;
+using RadixAPIGateway.Domain.Models;
 
 namespace RadixAPIGateway.Domain.Interfaces.Services
 {
-    public interface IStoreService
+    public interface IStoreService : IGenericService<Store>
     {
-        Store GetById(int id);
     }
 }

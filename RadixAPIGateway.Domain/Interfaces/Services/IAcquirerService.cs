@@ -1,9 +1,9 @@
-﻿using RadixAPIGateway.Domain.Models;
+﻿using RadixAPIGateway.Domain.Interfaces.Services.Generic;
+using RadixAPIGateway.Domain.Models;
 
 namespace RadixAPIGateway.Domain.Interfaces.Services
 {
-    public interface IAcquirerService
+    public interface IAcquirerService : IGenericService<Acquirer>
     {
-        Acquirer GetById(int id);
     }
 }
