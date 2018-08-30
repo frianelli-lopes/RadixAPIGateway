@@ -10,7 +10,7 @@ namespace RadixAPIGateway.API
     {
         public IEnumerable<TResponse> Response { get; private set; }
         public string Message { get; private set; }
-        public HttpStatusCode StatusCode { get; private set; } = HttpStatusCode.OK;
+        private HttpStatusCode StatusCode { get; set; } = HttpStatusCode.OK;
 
         public ApiResult(OperationResult result)
         {

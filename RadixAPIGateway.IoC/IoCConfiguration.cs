@@ -13,6 +13,7 @@ namespace RadixAPIGateway.IoC
             //Services
             services.AddScoped(typeof(IAcquirerService), typeof(AcquirerService));
             services.AddScoped(typeof(IStoreService), typeof(StoreService));
+            services.AddScoped(typeof(ISaleService), typeof(SaleService));
 
             //Repositories
             //services.AddScoped(typeof(IAcquirerRepository), typeof(AcquirerRepository));

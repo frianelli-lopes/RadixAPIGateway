@@ -27,7 +27,7 @@ namespace RadixAPIGateway.Domain.Services.Generic
                     response = new GetOneResult<TEntity>(result, true, null, System.Net.HttpStatusCode.OK, null);
                 } else
                 {
-                    response = new GetOneResult<TEntity>(result, false, null, System.Net.HttpStatusCode.NotFound, null);
+                    response = new GetOneResult<TEntity>(result, false, "Loja não encontrada com o identificador informado", System.Net.HttpStatusCode.NotFound, null);
                 }
             }
             catch (System.Exception ex)
