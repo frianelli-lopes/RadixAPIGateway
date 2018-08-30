@@ -1,4 +1,4 @@
-﻿using RadixAPIGateway.Domain.Models.Request.EnumTypes;
+﻿using RadixAPIGateway.Domain.Models.EnumTypes;
 using System.ComponentModel.DataAnnotations;
 
 namespace RadixAPIGateway.Domain.Models.Request

@@ -9,14 +9,14 @@ using RadixAPIGateway.Data.Context;
 namespace RadixAPIGateway.Data.Migrations
 {
     [DbContext(typeof(EFContext))]
-    [Migration("20180829191625_Banco Inicial")]
+    [Migration("20180830153506_Banco Inicial")]
     partial class BancoInicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846")
+                .HasAnnotation("ProductVersion", "2.1.2-rtm-30932")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -25,6 +25,8 @@ namespace RadixAPIGateway.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("Acquirer");
 
                     b.Property<bool>("HasAntiFraudAgreement");
 

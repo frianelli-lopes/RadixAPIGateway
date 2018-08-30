@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadixAPIGateway.Domain", "RadixAPIGateway.Domain\RadixAPIGateway.Domain.csproj", "{E4DCC34C-45A5-4837-BE20-E77878943C1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RadixAPIGateway.Domain", "RadixAPIGateway.Domain\RadixAPIGateway.Domain.csproj", "{E4DCC34C-45A5-4837-BE20-E77878943C1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadixAPIGateway.API", "RadixAPIGateway.API\RadixAPIGateway.API.csproj", "{597D3BCE-B3D5-4A7F-8476-A6604798B1A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RadixAPIGateway.API", "RadixAPIGateway.API\RadixAPIGateway.API.csproj", "{597D3BCE-B3D5-4A7F-8476-A6604798B1A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadixAPIGateway.Data", "RadixAPIGateway.Data\RadixAPIGateway.Data.csproj", "{ADDF6BE2-6A0B-45CA-BDDD-39A4022CC7F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RadixAPIGateway.Data", "RadixAPIGateway.Data\RadixAPIGateway.Data.csproj", "{ADDF6BE2-6A0B-45CA-BDDD-39A4022CC7F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadixAPIGateway.IoC", "RadixAPIGateway.IoC\RadixAPIGateway.IoC.csproj", "{C1C7F3CD-1B6E-4F7C-80AB-6EEC75CDCEB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RadixAPIGateway.IoC", "RadixAPIGateway.IoC\RadixAPIGateway.IoC.csproj", "{C1C7F3CD-1B6E-4F7C-80AB-6EEC75CDCEB1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-API", "0-API", "{4392343C-1E1E-47D5-91C2-2E5980AFF688}"
 EndProject
@@ -20,6 +20,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1-Data", "3.1-Data", "{89E0F03E-26C2-4EFC-908F-5C821E4C646D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2-CrossCutting", "3.2-CrossCutting", "{FD413A13-521F-4810-A066-66A11C613612}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.3-Providers", "3.3-Providers", "{CA826DCA-84F7-4672-91EB-DD49E148B041}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadixAPIGateway.Provider", "RadixAPIGateway.Provider\RadixAPIGateway.Provider.csproj", "{5AE96E7E-517C-4191-BDC7-86D50ED6E19B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +47,10 @@ Global
 		{C1C7F3CD-1B6E-4F7C-80AB-6EEC75CDCEB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1C7F3CD-1B6E-4F7C-80AB-6EEC75CDCEB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1C7F3CD-1B6E-4F7C-80AB-6EEC75CDCEB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AE96E7E-517C-4191-BDC7-86D50ED6E19B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AE96E7E-517C-4191-BDC7-86D50ED6E19B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AE96E7E-517C-4191-BDC7-86D50ED6E19B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AE96E7E-517C-4191-BDC7-86D50ED6E19B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +62,8 @@ Global
 		{C1C7F3CD-1B6E-4F7C-80AB-6EEC75CDCEB1} = {FD413A13-521F-4810-A066-66A11C613612}
 		{89E0F03E-26C2-4EFC-908F-5C821E4C646D} = {64AC04F4-6E9B-4058-A2DE-A92C9C748ECB}
 		{FD413A13-521F-4810-A066-66A11C613612} = {64AC04F4-6E9B-4058-A2DE-A92C9C748ECB}
+		{CA826DCA-84F7-4672-91EB-DD49E148B041} = {64AC04F4-6E9B-4058-A2DE-A92C9C748ECB}
+		{5AE96E7E-517C-4191-BDC7-86D50ED6E19B} = {CA826DCA-84F7-4672-91EB-DD49E148B041}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C12370D3-69A2-4025-AF28-C606BA72432B}

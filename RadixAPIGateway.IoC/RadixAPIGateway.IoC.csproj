@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\RadixAPIGateway.Data\RadixAPIGateway.Data.csproj" />
     <ProjectReference Include="..\RadixAPIGateway.Domain\RadixAPIGateway.Domain.csproj" />
+    <ProjectReference Include="..\RadixAPIGateway.Provider\RadixAPIGateway.Provider.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace RadixAPIGateway.Domain.Models.Request.EnumTypes
+namespace RadixAPIGateway.Domain.Models.EnumTypes
 {
     public enum CreditCardBrandEnum
     {
@@ -14,6 +14,6 @@ namespace RadixAPIGateway.Domain.Models.Request.EnumTypes
         /// MasterCard
         /// </summary>
         [EnumMember]
-        Mastercard = 2,
+        Mastercard = 2
     }
 }

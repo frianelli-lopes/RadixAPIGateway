@@ -42,7 +42,11 @@ namespace RadixAPIGateway.API
 
             //app.UseStaticFiles();
 
-            ////app.UseMigrations(env);
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                serviceScope.ServiceProvider.GetService<EFContext>().Database.Migrate();
+                serviceScope.ServiceProvider.GetService<EFContext>().Seed();
+            }
 
             app.UseMvc();
         }
