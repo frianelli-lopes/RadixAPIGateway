@@ -10,7 +10,7 @@ using RadixAPIGateway.Data.Context;
 namespace RadixAPIGateway.Data.Migrations
 {
     [DbContext(typeof(EFContext))]
-    [Migration("20180831145034_Banco Inicial")]
+    [Migration("20180831161944_Banco Inicial")]
     partial class BancoInicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
