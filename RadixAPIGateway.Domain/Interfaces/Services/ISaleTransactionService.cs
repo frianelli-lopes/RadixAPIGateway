@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace RadixAPIGateway.Domain.Interfaces.Services
 {
-    public interface ISaleService
+    public interface ISaleTransactionService
     {
         Task<OperationResult> Process(SaleRequest request);
     }

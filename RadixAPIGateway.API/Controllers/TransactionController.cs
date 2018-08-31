@@ -11,9 +11,9 @@ namespace RadixAPIGateway.API.Controllers
     public class TransactionController : ControllerBase
     {
         private readonly IStoreService _storeService;
-        private readonly ISaleService _saleService;
+        private readonly ISaleTransactionService _saleService;
 
-        public TransactionController(IStoreService storeService, ISaleService saleService)
+        public TransactionController(IStoreService storeService, ISaleTransactionService saleService)
         {
             _storeService = storeService;
             _saleService = saleService;

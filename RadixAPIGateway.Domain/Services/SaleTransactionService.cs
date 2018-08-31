@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace RadixAPIGateway.Domain.Services
 {
-    public class SaleService : ISaleService
+    public class SaleTransactionService : ISaleTransactionService
     {
         private readonly IStoreService _storeService;
         private readonly IAntiFraudProvider _antiFraudProvider;
         private readonly ISaleTransactionProvider _saleTransactionProvider;
 
-        public SaleService(IStoreService storeService, IAntiFraudProvider antiFraudProvider)
+        public SaleTransactionService(IStoreService storeService, IAntiFraudProvider antiFraudProvider)
         {
             _storeService = storeService;
             _antiFraudProvider = antiFraudProvider;
@@ -30,7 +30,9 @@ namespace RadixAPIGateway.Domain.Services
             if (!ProcessAntiFraud(oneResultStore.Entity, request))
                 return new OperationResult(false, "Erro no processamento antifraude", System.Net.HttpStatusCode.BadRequest, oneResultStore.Exception);
 
-
+            if (!ProcessSaleTransaction(oneResultStore.Entity, request))
+                return new OperationResult(false, "Erro no processamento da transação de venda", System.Net.HttpStatusCode.BadRequest, oneResultStore.Exception);
+            
             return new OperationResult(true, null, System.Net.HttpStatusCode.OK, null);
         }
 
@@ -43,15 +45,7 @@ namespace RadixAPIGateway.Domain.Services
 
         private bool ProcessSaleTransaction(Store store, SaleRequest request)
         {
-            AcquirerEnum? acquirer = store.Acquirer;
-
-            if (!acquirer.HasValue)
-            {
-                if (request.Transacao.CartaoCredito.Bandeira == CreditCardBrandEnum.Visa)
-                    acquirer = AcquirerEnum.Stone;
-                else
-                    acquirer = AcquirerEnum.Cielo;
-            }
+            return _saleTransactionProvider.
         }
     }
 }
