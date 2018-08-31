@@ -7,6 +7,7 @@ namespace RadixAPIGateway.Data.Context
         public static void Seed(this EFContext context)
         {
             SeedStore.InsertData(context);
+            SeedSaleTransaction.InsertData(context);
         }
     }
 }

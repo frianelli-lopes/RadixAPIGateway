@@ -10,5 +10,6 @@ namespace RadixAPIGateway.Data.Context
         { }
 
         public DbSet<Store> Store { get; set; }
+        public DbSet<SaleTransaction> SaleTransaction { get; set; }
     }
 }

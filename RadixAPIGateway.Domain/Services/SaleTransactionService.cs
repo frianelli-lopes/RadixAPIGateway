@@ -4,7 +4,6 @@ using RadixAPIGateway.Domain.Interfaces.Services;
 using RadixAPIGateway.Domain.Models;
 using RadixAPIGateway.Domain.Models.Request;
 using RadixAPIGateway.Domain.Shareds.Results;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -25,9 +24,25 @@ namespace RadixAPIGateway.Domain.Services
             _saleTransactionRepository = saleTransactionRepository;
         }
 
-        public async Task<IEnumerable<SaleTransaction>> GetByStore(int idStore)
+        public async Task<GetManyResult<SaleTransaction>> GetByStore(int idStore)
         {
-            return await _saleTransactionRepository.GetByStore(idStore);
+            try
+            {
+                var result = await _saleTransactionRepository.GetByStore(idStore);
+
+                if (result == null)
+                {
+                    return new GetManyResult<SaleTransaction>(null, false, "Não foram encontradas transações de venda para a loja informada", System.Net.HttpStatusCode.NotFound, null);
+                }
+                else
+                {
+                    return new GetManyResult<SaleTransaction>(result, true, "Foram encontradas transações de venda para a loja informada", System.Net.HttpStatusCode.OK, null);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                return new GetManyResult<SaleTransaction>(null, false, "Erro ao tentar listar transações de venda para a loja informada", System.Net.HttpStatusCode.BadRequest, ex);
+            }
         }
 
         public async Task<OperationResult> Process(SaleRequest request)

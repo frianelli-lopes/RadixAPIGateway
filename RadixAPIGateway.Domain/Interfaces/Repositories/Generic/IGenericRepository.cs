@@ -1,5 +1,4 @@
-﻿using RadixAPIGateway.Domain.Shareds.Results;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace RadixAPIGateway.Domain.Interfaces.Repositories.Generic
 {

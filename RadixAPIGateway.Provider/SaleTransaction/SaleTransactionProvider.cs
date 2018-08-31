@@ -11,7 +11,7 @@ namespace RadixAPIGateway.Provider.SaleTransaction
     {
         public async Task<HttpResponseMessage> SendRequest(Store store, SaleRequest saleRequest)
         {
-            int? idAcquirer = store.IdAcquirer;
+            int? idAcquirer = store.AcquirerId;
 
             if (!idAcquirer.HasValue)
             {

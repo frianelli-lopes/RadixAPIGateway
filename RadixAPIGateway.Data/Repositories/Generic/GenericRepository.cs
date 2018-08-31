@@ -1,5 +1,6 @@
 ﻿using RadixAPIGateway.Data.Context;
 using RadixAPIGateway.Domain.Interfaces.Repositories.Generic;
+using RadixAPIGateway.Domain.Shareds.Results;
 using System.Threading.Tasks;
 
 namespace RadixAPIGateway.Data.Repositories.Generic
@@ -13,9 +14,9 @@ namespace RadixAPIGateway.Data.Repositories.Generic
             _context = context;
         }
 
-        public virtual Task<TEntity> GetById(int id)
+        public async virtual Task<TEntity> GetById(int id)
         {
-            return _context.Set<TEntity>().FindAsync(id);
+            return await _context.Set<TEntity>().FindAsync(id);
         }
     }
 }

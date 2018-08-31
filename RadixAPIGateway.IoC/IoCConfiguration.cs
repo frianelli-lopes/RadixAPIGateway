@@ -19,6 +19,7 @@ namespace RadixAPIGateway.IoC
 
             //Repositories
             services.AddScoped(typeof(IStoreRepository), typeof(StoreRepository));
+            services.AddScoped(typeof(ISaleTransactionRepository), typeof(SaleTransactionRepository));
 
             //Providers
             services.AddScoped(typeof(IAntiFraudProvider), typeof(ClearSaleAntiFraudProvider));

@@ -1,4 +1,5 @@
-﻿using RadixAPIGateway.Data.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using RadixAPIGateway.Data.Context;
 using RadixAPIGateway.Domain.Interfaces.Repositories;
 using RadixAPIGateway.Domain.Models;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace RadixAPIGateway.Data.Repositories
 
         public async Task<IEnumerable<SaleTransaction>> GetByStore(int idStore)
         {
-            return _context.Set<SaleTransaction>().Where(x => x.StoreId == idStore).ToList();
+            return await _context.Set<SaleTransaction>().Where(x => x.StoreId == idStore).ToListAsync();
         }
     }
 }

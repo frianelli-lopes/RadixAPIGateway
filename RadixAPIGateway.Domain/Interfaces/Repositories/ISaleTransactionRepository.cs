@@ -1,4 +1,5 @@
 ﻿using RadixAPIGateway.Domain.Models;
+using RadixAPIGateway.Domain.Shareds.Results;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

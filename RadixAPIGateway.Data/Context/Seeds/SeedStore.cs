@@ -11,8 +11,8 @@ namespace RadixAPIGateway.Data.Context.Seeds
             if (!context.Store.Any())
             {
                 IList<Store> listStore = new List<Store>() {
-                    new Store() {Name="Abba Technology - Brasil", HasAntiFraudAgreement=false, Acquirer=Domain.Models.EnumTypes.AcquirerEnum.Stone},
-                    new Store() {Name="Abba Technology - EUA", HasAntiFraudAgreement=true, Acquirer=Domain.Models.EnumTypes.AcquirerEnum.Cielo}
+                    new Store() {Name="Abba Technology - Brasil", HasAntiFraudAgreement=false, AcquirerId=1},
+                    new Store() {Name="Abba Technology - EUA", HasAntiFraudAgreement=true}
                 };
 
                 context.Store.AddRange(listStore);

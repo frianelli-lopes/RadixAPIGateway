@@ -9,7 +9,7 @@ namespace RadixAPIGateway.Domain.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public bool HasAntiFraudAgreement { get; set; }
-        public int? IdAcquirer { get; set; }
+        public int? AcquirerId { get; set; }
 
         public virtual ICollection<SaleTransaction> SalesTransaction { get; set; }
     }
