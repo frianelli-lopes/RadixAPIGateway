@@ -9,28 +9,23 @@ namespace RadixAPIGateway.Provider.SaleTransaction
 {
     public class SaleTransactionProvider : ISaleTransactionProvider
     {
-        public Task<HttpResponseMessage> SendRequest(Store store, SaleRequest request)
+        public async Task<HttpResponseMessage> SendRequest(Store store, SaleRequest saleRequest)
         {
-            AcquirerEnum? acquirerEnum = store.Acquirer;
+            int? idAcquirer = store.IdAcquirer;
 
-            if (!acquirerEnum.HasValue)
+            if (!idAcquirer.HasValue)
             {
-                if (request.Transacao.CartaoCredito.Bandeira == CreditCardBrandEnum.Visa)
-                    acquirerEnum = AcquirerEnum.Stone;
+                if (saleRequest.Transacao.CartaoCredito.Bandeira == CreditCardBrandEnum.Visa)
+                    idAcquirer = 2;
                 else
-                    acquirerEnum = AcquirerEnum.Cielo;
+                    idAcquirer = 1;
             }
 
-            if (acquirerEnum == AcquirerEnum.Cielo)
-            {
+            var acquirer = Acquirer.GetAcquirerById(idAcquirer.Value);
 
-            }
+            var response = await acquirer.SendRequest(store, saleRequest);
 
-            HttpClient client = new HttpClient();
-            var jsonInString = JsonConvert.SerializeObject(transactionToSend);
-            HttpResponseMessage response = await client.PostAsync(uri, new StringContent(jsonInString, Encoding.UTF8, "application/json"));
-
-
+            return response;
         }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using RadixAPIGateway.Domain.Interfaces.Providers;
+using RadixAPIGateway.Domain.Interfaces.Repositories;
 using RadixAPIGateway.Domain.Interfaces.Services;
 using RadixAPIGateway.Domain.Models;
-using RadixAPIGateway.Domain.Models.EnumTypes;
 using RadixAPIGateway.Domain.Models.Request;
 using RadixAPIGateway.Domain.Shareds.Results;
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace RadixAPIGateway.Domain.Services
@@ -13,11 +15,19 @@ namespace RadixAPIGateway.Domain.Services
         private readonly IStoreService _storeService;
         private readonly IAntiFraudProvider _antiFraudProvider;
         private readonly ISaleTransactionProvider _saleTransactionProvider;
+        private readonly ISaleTransactionRepository _saleTransactionRepository;
 
-        public SaleTransactionService(IStoreService storeService, IAntiFraudProvider antiFraudProvider)
+        public SaleTransactionService(IStoreService storeService, IAntiFraudProvider antiFraudProvider, ISaleTransactionProvider saleTransactionProvider, ISaleTransactionRepository saleTransactionRepository)
         {
             _storeService = storeService;
             _antiFraudProvider = antiFraudProvider;
+            _saleTransactionProvider = saleTransactionProvider;
+            _saleTransactionRepository = saleTransactionRepository;
+        }
+
+        public async Task<IEnumerable<SaleTransaction>> GetByStore(int idStore)
+        {
+            return await _saleTransactionRepository.GetByStore(idStore);
         }
 
         public async Task<OperationResult> Process(SaleRequest request)
@@ -30,8 +40,9 @@ namespace RadixAPIGateway.Domain.Services
             if (!ProcessAntiFraud(oneResultStore.Entity, request))
                 return new OperationResult(false, "Erro no processamento antifraude", System.Net.HttpStatusCode.BadRequest, oneResultStore.Exception);
 
-            if (!ProcessSaleTransaction(oneResultStore.Entity, request))
-                return new OperationResult(false, "Erro no processamento da transação de venda", System.Net.HttpStatusCode.BadRequest, oneResultStore.Exception);
+            var response = await ProcessSaleTransaction(oneResultStore.Entity, request);
+            if (response.StatusCode != System.Net.HttpStatusCode.OK) 
+                return new OperationResult(false, "Erro no processamento da transação de venda", response.StatusCode, oneResultStore.Exception);
             
             return new OperationResult(true, null, System.Net.HttpStatusCode.OK, null);
         }
@@ -43,9 +54,9 @@ namespace RadixAPIGateway.Domain.Services
             return true;
         }
 
-        private bool ProcessSaleTransaction(Store store, SaleRequest request)
+        private async Task< HttpResponseMessage> ProcessSaleTransaction(Store store, SaleRequest request)
         {
-            return _saleTransactionProvider.
+            return await _saleTransactionProvider.SendRequest(store, request);
         }
     }
 }
